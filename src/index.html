@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" http-equiv="content-type" charset="utf-8" content="width=device-width, initial-scale=1">
+    <link href="res/index.css" rel="stylesheet">
+    <title>RDM DynamicList</title>
+</head>
+
+<body>
+    <div id="test_frame" class="frame">
+        <span>Test Functions</span>
+        <div id="test_buttons_a">
+            <button id="add_1" class="na-button na-button-red">Add 1</button>
+            <button id="add_10" class="na-button na-button-red">Add 10</button>
+            <button id="add_100" class="na-button na-button-red">Add 100</button>
+            <button id="add_1000" class="na-button na-button-red">Add 1000</button>
+            <div style="width:1rem;"></div>
+            <button id="all_online" class="na-button">All Online</button>
+            <button id="all_offline" class="na-button">All Offline</button>
+            <button id="random_online" class="na-button">Random Online/Offline</button>
+            <div style="width:1rem;"></div>
+            <button id="filter_none" class="na-button na-button-green">Filter: None</button>
+            <button id="filter_na" class="na-button na-button-green">Filter: NA</button>
+            <button id="filter_tmb" class="na-button na-button-green">Filter: TMB</button>
+        </div>
+        <div id="test_buttons_b">
+            <button id="all_update" class="na-button">Update All</button>
+            <button id="first_10_update" class="na-button">Update First 10</button>
+            <button id="first_100_update" class="na-button">Update First 100</button>
+            <button id="random_update_50" class="na-button">Update Random 50%</button>
+            <button id="random_update_2" class="na-button">Update Random 2%</button>
+            <div style="width:1rem;"></div>
+            <button id="sort_uid" class="na-button na-button-green">Sort By UID</button>
+            <button id="sort_address" class="na-button na-button-green">Sort By Address</button>
+            <button id="sort_manufacturer" class="na-button na-button-green">Sort By Manufacturer</button>
+        </div>
+    </div>
+    <div id="list_frame" class="frame">
+        <span>RDM Device List || FILTER_VISIBLE_COUNT: <span id="filter">0</span> || DEVICE COUNT: <span id="activeDevices">0</span> ||  SORT MODE: <span id="sortMode">None</span>|| FILTER MODE: <span id="filterMode">None</span></span>
+        <div id="rdm_device_list">
+            <table class="na-table" style="width: 100%;">
+                <tr class="rdm-list-header na-table-header" style="position: sticky;">
+                    <th style="min-width: 1rem; max-width: 1rem;"></th>
+                    <th style="min-width: 6rem; max-width: 6rem;">UID</th>
+                    <th style="min-width: 12rem;">LABEL</th>
+                    <th style="min-width: 8rem;">MANUFACTURER</th>
+                    <th style="min-width: 12rem;">MODEL</th>
+                    <th style="min-width: 12rem;">MODE</th>
+                    <th style="min-width: 6rem;">ADDRESS</th>
+                </tr>
+                <table id="root" class="na-table" style="width: 100%;"></table>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

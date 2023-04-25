@@ -1,0 +1,226 @@
+@font-face {
+    font-family: Lato;
+    src: url(Lato-Regular.ttf);
+}
+
+:root {
+    --dark_bg: rgb(8, 8, 8);
+    --frame_ol: rgb(64, 64, 64);
+    --frame_bg: rgb(16, 16, 16);
+    --lighter_bg: rgb(36, 36, 36);
+    --button_bg: rgb(80, 80, 80);
+    --button_disabled: rgb(64, 64, 64);
+    --button_ol: rgb(100, 100, 100);
+    --button_light_bg: rgb(120, 120, 120);
+    --accent2_ol: rgb(0, 128, 255);
+    font-size: 12pt;
+    white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(151, 151, 151);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(195, 195, 195);
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+::-moz-selection {
+    background: rgb(100, 100, 100);
+}
+
+::selection {
+    background: rgb(100, 100, 100);
+}
+
+* {
+    font-family: Lato;
+    font-size: 1rem;
+    color: #fff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark_bg);
+    overflow: hidden;
+}
+
+#test_frame {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    height: 7rem;
+}
+
+#test_buttons_a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 50%;
+    padding-bottom: 0.5rem;
+}
+
+#test_buttons_b {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 50%;
+    top: 50%;
+    padding-top: 0.5rem;
+}
+
+#test_buttons_a button {
+    margin: 0.25rem;
+}
+
+#test_buttons_b button {
+    margin: 0.25rem;
+}
+
+#list_frame {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: 9rem;
+    bottom: 1rem;
+}
+
+.frame {
+    background: var(--frame_bg);
+    border: solid 2px var(--frame_ol);
+}
+
+.frame>span {
+    position: absolute;
+    width: 100%;
+    height: 1.5rem;
+    background: var(--frame_ol);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.frame>div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1.5rem;
+    bottom: 0;
+}
+
+#rdm_device_list {
+    overflow: auto;
+}
+
+.rdm-list-header {
+    height: 1.5rem;
+    font-size: 0.8rem;
+}
+
+.na-table {
+    border-collapse: collapse;
+}
+
+.na-table tr {
+    width: 100%;
+    border-bottom: solid 2px var(--dark_bg);
+}
+
+.na-table-header {
+    border-bottom: none;
+}
+
+.na-table th {
+    font-size: 0.7rem;
+    font-weight: lighter;
+    background-color: rgb(110, 110, 110);
+    margin: 0;
+    padding: 0;
+    border: none;
+    padding: 0 1rem;
+}
+
+.na-table td {
+    padding: 0;
+    margin: 0;
+}
+
+.na-table-rightborder th {
+    border-right: solid 1px var(--lighter_bg);
+}
+
+.na-table-rightborder td {
+    border-right: solid 1px var(--dark_bg);
+}
+
+.na-table td:last-of-type {
+    border-right: none;
+}
+
+.na-table th:last-of-type {
+    border-right: none;
+}
+
+.na-table tr {
+    background-color: var(--lighter_bg);
+}
+
+.na-button {
+    background-color: var(--button_bg);
+    border: none;
+    border-bottom: 3px solid var(--accent2_ol);
+    height: 2rem;
+    transition-duration: 100ms;
+    cursor: pointer;
+    padding: 0 1rem;
+}
+
+.na-button:hover {
+    background-color: var(--accent2_ol);
+}
+
+.na-button-red {
+    border-bottom: 3px solid #F00;
+}
+
+.na-button-red:hover {
+    background-color: #F00;
+}
+
+.na-button-green {
+    border-bottom: 3px solid #090;
+}
+
+.na-button-green:hover {
+    background-color: #090;
+}
+
+.na-button:disabled {
+    background-color: var(--lighter_bg);
+    border-color: var(--button_bg);
+    color: #888;
+}
