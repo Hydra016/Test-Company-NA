@@ -12,9 +12,10 @@ const table = document.querySelector("#root");
 let devices: RDM_Device[] = [];
 let filteredDevices: RDM_Device[] = [];
 let activeDevices: any = 0;
-let filterMode = document.querySelector('#filterMode')
-let sortMode = document.querySelector('#sortMode')
+let filterMode = document.querySelector("#filterMode");
+let sortMode = document.querySelector("#sortMode");
 
+//generates table row with the required information
 function generateTable(device: RDM_Device) {
   activeDevices = g_Server.GetDeviceCount();
   let activeDevicesText = document.querySelector("#activeDevices");
@@ -24,17 +25,19 @@ function generateTable(device: RDM_Device) {
   document.querySelector("#filter").textContent = String(
     filteredDevices.length
   );
-  return `      <tr class="rdm-list-header na-table-header">
-    <td></td>
-    <td class="uid">${device.uid}</td>
-    <td class="label">${device.label}</td>
-    <td class="manufacturer">${device.manufacturer}</td>
-    <td class="model">${device.model}</td>
-    <td class="mode">${device.mode_index}</td>
-    <td class="address">${device.address}</td>
+  return `     
+  <tr class='rdm-list-item'>
+    <th style="min-width: 1rem; max-width: 1rem;"></th>
+                    <th style="min-width: 6rem; max-width: 6rem;">${device.uid}</th>
+                    <th style="min-width: 12rem;">${device.label}</th>
+                    <th style="min-width: 8rem;">${device.manufacturer}</th>
+                    <th style="min-width: 12rem;">${device.model}</th>
+                    <th style="min-width: 12rem;">${device.mode_index}</th>
+                    <th style="min-width: 6rem;">${device.address}</th>
 </tr>`;
 }
 
+//filters the devices by name
 function filterByName(name: string) {
   filteredDevices = devices.filter((device) => device.manufacturer === name);
   table.innerHTML = `
@@ -44,6 +47,7 @@ function filterByName(name: string) {
                   `;
 }
 
+//This function runs when you add devices and it also has a numResults argument which helps to limit the visible number of devices to improve performance.
 function showResults(numResults: number) {
   const incrementResultsToShow = 100;
   table.innerHTML = `
@@ -51,8 +55,8 @@ function showResults(numResults: number) {
           .slice(0, numResults)
           .map((device) => generateTable(device))
           .join("")}
-        <tr class="show-more-row">
-            <td colspan="7" class="show-more-cell">
+        <tr>
+            <td colspan="7">
                 <button class="show-more-button" ${
                   numResults >= devices.length ? 'style="display:none;"' : ""
                 }>Show More</button>
@@ -72,8 +76,9 @@ function showResults(numResults: number) {
   }
 }
 
+//sort devices based on the required parameters
 const sortDevices = (devices: RDM_Device[], key: string): void => {
-  const newDevices = devices.sort((a:any, b:any) => {
+  const newDevices = devices.sort((a: any, b: any) => {
     if (a[key] > b[key]) {
       return -1;
     }
@@ -84,12 +89,8 @@ const sortDevices = (devices: RDM_Device[], key: string): void => {
   });
 
   table.innerHTML = `
-    ${newDevices
-      .map((device: RDM_Device) => generateTable(device))
-      .join("")}`;
+    ${newDevices.map((device: RDM_Device) => generateTable(device)).join("")}`;
 };
-
-
 
 function main() {
   g_Server = new Server({
@@ -143,7 +144,7 @@ function main() {
   console.log("First Device: ", g_Server.GetDeviceByIndex(0));
 
   document.getElementById("filter_none").onclick = () => {
-    filterMode.textContent = 'None'
+    filterMode.textContent = "None";
     const table = document.querySelector("#root");
     filteredDevices = [];
     table.innerHTML = ""; // Clear previous list
@@ -153,28 +154,34 @@ function main() {
   };
 
   document.getElementById("filter_na").onclick = () => {
-    filterMode.textContent = 'NA'
+    filterMode.textContent = "NA";
     filterByName("Company NA");
   };
 
   document.getElementById("filter_tmb").onclick = () => {
-    filterMode.textContent = 'TMB'
+    filterMode.textContent = "TMB";
     filterByName("TMB");
   };
 
   document.getElementById("sort_uid").onclick = () => {
-    sortMode.textContent = 'UID'
-    filterMode.textContent !== 'None' ? sortDevices(filteredDevices, 'uid') : sortDevices(devices, 'uid')
+    sortMode.textContent = "UID";
+    filterMode.textContent !== "None"
+      ? sortDevices(filteredDevices, "uid")
+      : sortDevices(devices, "uid");
   };
 
-  document.getElementById("sort_address").onclick = () => { 
-    sortMode.textContent = 'Address'
-    filterMode.textContent !== 'None' ? sortDevices(filteredDevices, 'address') : sortDevices(devices, 'address')
+  document.getElementById("sort_address").onclick = () => {
+    sortMode.textContent = "Address";
+    filterMode.textContent !== "None"
+      ? sortDevices(filteredDevices, "address")
+      : sortDevices(devices, "address");
   };
 
   document.getElementById("sort_manufacturer").onclick = () => {
-    sortMode.textContent = 'Manufacturer'
-    filterMode.textContent !== 'None' ? sortDevices(filteredDevices, 'manufacturer') : sortDevices(devices, 'manufacturer')
+    sortMode.textContent = "Manufacturer";
+    filterMode.textContent !== "None"
+      ? sortDevices(filteredDevices, "manufacturer")
+      : sortDevices(devices, "manufacturer");
   };
 
   g_DeviceList = new DynamicList(document.getElementById("rdm_device_list"));

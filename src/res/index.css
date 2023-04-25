@@ -152,6 +152,7 @@ body {
 
 .na-table-header {
     border-bottom: none;
+    position: sticky;
 }
 
 .na-table th {
@@ -223,4 +224,21 @@ body {
     background-color: var(--lighter_bg);
     border-color: var(--button_bg);
     color: #888;
+}
+
+.rdm-item {
+    width: 100% / 6;
+}
+
+.show-more-button {
+    background-color: #090;
+    border: none;
+    margin: 10px 10px;
+    padding: 1rem 5rem;
+    cursor: pointer;
+}
+
+.show-more-button:hover {
+    background-color: #013220;
+    transition: all 0.2s ease-in-out;
 }
